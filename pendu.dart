@@ -1,17 +1,17 @@
 import 'dart:html';
 import 'dart:math';
 
-// Liste de mots possible pour le jeu
+// Liste de mots possibles pour le jeu
 List<String> mots =
 ["soleil",
- "ecole",
- "pokemon",
- "crystal",
- "meth",
- "anticonstitutionnellement",
- "chuck",
- "norris",
+ "concentration",
  "université",
+ "administration",
+ "laval",
+ "anticonstitutionnellement",
+ "encadrement",
+ "travail",
+ "javascript",
  "programmation",
  "dart",
  "tellement",
@@ -26,7 +26,7 @@ String lettresEntrees = "";
 List<String> motCache;
 bool partieTerminee = false;
 
-// Debut du programme
+// Début du programme
 void main() {
   // Ajouter les événements
   InputElement input = querySelector("#inputTextbox");
@@ -35,7 +35,7 @@ void main() {
   reset();
 }
 
-// initialise le programme
+// Initialiser le programme
 void reset() {
   
   // Choisir le mot de cette partie au hasard
@@ -44,7 +44,7 @@ void reset() {
   querySelector("#texteMotChoisi").text = motCache.join();
   querySelector("#texteVictoire").text = "";
   
-  // Image de depart
+  // Image de départ
   vieCourante = 1;
   ImageElement img = querySelector("#imagePendu");
   img.src = "pendu" + vieCourante.toString() + ".png";
@@ -52,7 +52,7 @@ void reset() {
   partieTerminee = false;
 }
 
-// Événement quand on entre une lettre
+// Événement lorsque l'on entre une lettre
 void lettreEntree(KeyboardEvent event) {
   if(partieTerminee) {
     reset();
@@ -63,10 +63,10 @@ void lettreEntree(KeyboardEvent event) {
   String lettreChoisi = new String.fromCharCode(event.charCode);
   input.value = "";
   
-  // Si la lettre est dans le mot
+  // Si la lettre est dans le mot...
   if(motChoisi.contains(lettreChoisi)) {
     
-    // Mettre a jour les lettres cachées
+    // Mettre à jour les lettres cachées
     for (int i = 0; i < motChoisi.length; i++) {
       if(motChoisi[i] == lettreChoisi) {
         motCache[i] = lettreChoisi;
@@ -83,7 +83,7 @@ void lettreEntree(KeyboardEvent event) {
     }
     
   } else {
-    // La lettre n'était pas dans le mot, on l'ajoute aux lettres déja entrées
+    // Si la lettre n'était pas dans le mot, on l'ajoute aux lettres déja entrées.
     lettresEntrees = lettresEntrees + lettreChoisi;
 
     vieCourante++;
